@@ -1,0 +1,10 @@
+version: '2'
+services:
+  solr:
+    image: vulhub/solr:8.11.0
+    ports:
+      - "8983:8983"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
