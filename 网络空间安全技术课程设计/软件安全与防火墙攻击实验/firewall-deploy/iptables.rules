@@ -1,0 +1,22 @@
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# 允许SSH和Web端口
+-A INPUT -p tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp --dport 80 -j ACCEPT
+
+# 禁止10.0.0.0/24网段连入
+-A INPUT -s 10.0.0.0/24 -j DROP
+
+# 禁止23端口
+-A INPUT -p tcp --dport 23 -j DROP
+
+# 允许DNS查询回复
+-A INPUT -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
+
+# 禁止ICMP协议类型
+-A INPUT -p icmp -j DROP
+
+COMMIT

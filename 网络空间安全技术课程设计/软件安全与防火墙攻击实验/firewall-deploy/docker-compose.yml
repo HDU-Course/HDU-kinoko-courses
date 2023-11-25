@@ -1,0 +1,9 @@
+version: '3'
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./iptables.rules:/etc/iptables.rules
+    command: tail -f /dev/null
