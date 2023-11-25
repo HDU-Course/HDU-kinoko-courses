@@ -6,4 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./iptables.rules:/etc/iptables.rules
-    command: tail -f /dev/null
+    cap_add:
+      - NET_ADMIN
+    tty: true
