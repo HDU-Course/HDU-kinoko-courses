@@ -3,14 +3,21 @@
 
 主要是写文档很烦，最好是有人喜欢写文档就专门写文档，然后懂技术的搭建环境，合理分工。
 
+嫌麻烦可以去网上找打过对应靶场的教程copy直接截图，专注于写文档。
+
 ## 学习Web攻击
-### SQL注入攻击（必做）
+### SQL-ILabs 
+搭建靶场可以使用该目录下`sqli-labs-deploy`目录中的 Dockerfile 和 docker-compose.yml。
 
-### XSS攻击和CSRF攻击（必做）
+```shell
+sudo docker-compose up -d
 
+sudo dockerps
 
-### 基于二分法的SQL盲注（选做）
+sudo docker-compose down
+```
 
+参考：[SQL注入靶场sqli-labs 1-65关全部通关教程 ](https://www.cnblogs.com/-qing-/p/11610385.html)
 
 ### Apache Log4J2漏洞复现（选做）
-跟着 [vulhub](https://github.com/vulhub/vulhub/tree/master/log4j/CVE-2021-44228) 里的复现流程走一遍就行。
+参考：[vulhub](https://github.com/vulhub/vulhub/tree/master/log4j/CVE-2021-44228)

@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - '22:22'
+      - '81:80'
     volumes:
       - ./iptables.rules:/etc/iptables.rules
     cap_add:

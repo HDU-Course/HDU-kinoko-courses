@@ -8,6 +8,9 @@ RUN sed -i 's/http:\/\/deb.debian.org\/debian\//http:\/\/mirrors.163.com\/debian
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
+    telnet \
+    inetutils-ping \
+    openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
 # 下载并安装sqli-labs
