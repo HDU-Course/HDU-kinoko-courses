@@ -1,8 +1,7 @@
 version: '3'
 services:
   sqli-labs:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: acgpiano/sqli-labs
     ports:
       - 8081:80
+    restart: always
