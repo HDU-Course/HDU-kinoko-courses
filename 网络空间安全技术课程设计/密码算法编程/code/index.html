@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RSA</title>
+    <link rel="icon" href="./public/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="./public/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <h1>RSA</h1>
+      <main>
+        <div>
+          <section id="encrypt">
+            <h2>Encrypt</h2>
+            <textarea id="plaintext" placeholder="Please input plaintext..."></textarea>
+          </section>
+          <section id="command">
+            <button onclick="performEncryption()">Encrypt</button>
+            <button onclick="performDecryption()">Decrypt</button>
+          </section>
+          <section id="decrypt">
+            <h2>Decrypt</h2>
+            <textarea id="ciphertext" placeholder="Please input ciphertext..."></textarea>
+          </section>
+        </div>
+        <section id="param">
+          <h2>Parameters</h2>
+          <div>
+            <input type="text" id="modulus" placeholder="Enter modulus">
+            <input type="text" id="exponent" placeholder="Enter exponent">
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+  <script src="./public/rsa.js"></script>
+  <script>
+    async function performEncryption() {
+      const plaintext = document.getElementById('plaintext').value;
+      const modulus = document.getElementById('modulus').value;
+      const exponent = document.getElementById('exponent').value;
+      document.getElementById('ciphertext').value = "";
+
+      if (!plaintext || !modulus || !exponent) {
+        alert('Please enter all required values.');
+        return;
+      }
+
+      const publicKey = {
+        modulus: modulus,
+        exponent: exponent
+      };
+
+      const startTime = new Date().getTime();
+      const encryptedMessagePromise = rsaEncrypt(plaintext, publicKey);
+      const encryptedMessage = await Promise.race([encryptedMessagePromise, timeoutPromise(startTime)]);
+
+      if (encryptedMessage) {
+        document.getElementById('ciphertext').value = encryptedMessage;
+      } else {
+        alert('Encryption timed out.');
+      }
+    }
+
+    async function performDecryption() {
+      const ciphertext = document.getElementById('ciphertext').value;
+      const modulus = document.getElementById('modulus').value;
+      const exponent = document.getElementById('exponent').value;
+      document.getElementById('plaintext').value = "";
+
+      if (!ciphertext || !modulus || !exponent) {
+        alert('Please enter all required values.');
+        return;
+      }
+
+      const privateKey = {
+        modulus: modulus,
+        exponent: exponent
+      };
+
+      const startTime = new Date().getTime();
+      const decryptedMessagePromise = rsaDecrypt(ciphertext, privateKey);
+      const decryptedMessage = await Promise.race([decryptedMessagePromise, timeoutPromise(startTime)]);
+
+      if (decryptedMessage) {
+        document.getElementById('plaintext').value = decryptedMessage;
+      } else {
+        alert('Decryption timed out.');
+      }
+    }
+
+    function timeoutPromise(startTime) {
+      return new Promise((resolve) => {
+        const timeout = 10000; // 10 seconds
+        const currentTime = new Date().getTime();
+        if (currentTime - startTime > timeout) {
+          resolve(null);
+        }
+      });
+    }
+  </script>
+</html>

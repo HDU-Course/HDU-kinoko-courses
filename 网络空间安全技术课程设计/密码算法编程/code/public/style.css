@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    position: relative;
+}
+
+body {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font: 16px;
+    background: #f0f0f0;
+}
+
+#root {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    
+    > main {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    
+        > div {
+            display: flex;
+            
+            > * {
+                padding: 1rem;
+
+                > h2 {
+                    margin-bottom: .5rem;
+                }
+
+                > textarea {
+                    height: 32rem;
+                    width: 24rem;
+                    padding: 0.5rem;
+                }
+            }
+
+            > #command {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                > button {
+                    padding: .4rem .8rem;
+
+                    &:first-child {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+
+        > #param {
+            padding: 1rem;
+            width: 100%;
+            
+            > h2 {
+                margin-bottom: .5rem;
+            }
+
+            > div {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto;
+                grid-row-gap: .8rem;
+
+                > input[type="text"] {
+                    padding: .5rem;
+                }
+            }
+        }
+    }
+}
