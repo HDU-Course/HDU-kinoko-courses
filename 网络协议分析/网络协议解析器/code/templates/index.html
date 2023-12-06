@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ma5hr00m">
+  <title>网络协议解析器</title>
+</head>
+<body>
+  <h1>网络协议解析器</h1>
+  <button onclick="getDevices()">获取本地网络设备</button>
+  <ul id="deviceList"></ul>
+  <script>
+    // 获取设备列表
+    function getDevices() {
+      fetch('/devices')
+        .then(response => response.json())
+        .then(data => {
+          const deviceList = document.getElementById('deviceList');
+          deviceList.innerHTML = '';
+          data.devices.forEach(device => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `/capture/${device}`;
+            a.textContent = device;
+            li.appendChild(a);
+            deviceList.appendChild(li);
+          });
+        })
+        .catch(error => {
+          console.error('获取设备列表时发生错误:', error);
+        });
+    }
+  </script>
+</body>
+</html>

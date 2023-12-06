@@ -21,3 +21,10 @@ sudo python capture_packets.py --protocol icmp
 ```
 
 ## 实验三：简易网络协议解析器
+给实验二做个壳，使用flask实现的简易网页版解析器。使用以下指令运行服务：
+
+```shell
+sudo python app.py
+```
+
+访问[http://localhost:5000](http://localhost:5000)。

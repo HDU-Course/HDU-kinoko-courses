@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ma5hr00m">
+  <title>{{device}}</title>
+</head>
+<body>
+  <hgroup>
+    <h1>网络设备：{{device}}</h1>
+    <a href="/">返回首页</a>
+  </hgroup>
+  <section>
+    <form onsubmit="event.preventDefault(); startCapture()">
+      <input type="text" id="filter" name="filter" placeholder="过滤规则...">
+      <button type="submit">启动</button>
+    </form>
+    <button onclick="stopCapture()">停止</button>
+    <button onclick="clearPacketList()">清空</button>
+  </section>
+  <ul id="packetList"></ul>
+
+  <script>
+    let packetList = document.getElementById('packetList');
+    let intervalId;
+
+    function startCapture() {
+      const filter = document.getElementById('filter').value;
+      const device = '{{device}}';
+
+      intervalId = setInterval(() => {
+        fetchPacket(device, filter);
+      }, 1000);
+    }
+
+    function fetchPacket(device, filter) {
+      const data = {
+        device: device,
+        filter: filter
+      };
+
+      fetch('/capture', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => {
+          console.log(response);
+          if (response.ok) {
+            response.text().then(data => {
+              const packetData = data.split('\n');
+              const listItem = document.createElement('li');
+
+              for (let i = 0; i < packetData.length; i++) {
+                const item = document.createElement('span');
+                item.textContent = packetData[i];
+                listItem.appendChild(item);
+              }
+
+              // Data processing
+              const regex = /(HTTP|TCP|UDP|Ethernet|IP)：([\s\S]*?)(?=(HTTP|TCP|UDP|Ethernet|IP)：|$)/g;
+              const matches = listItem.textContent.matchAll(regex);
+
+              const processedData = Array.from(matches).map(match => {
+                const section = match[0];
+                return `<p>${section}</p>`;
+              }).join('');
+
+              listItem.innerHTML = processedData;
+
+              packetList.appendChild(listItem);
+            });
+          } else {
+            console.error('Failed to fetch packet');
+          }
+        });
+    }
+
+
+    function stopCapture() {
+      clearInterval(intervalId);
+    }
+
+    function clearPacketList() {
+      packetList.innerHTML = '';
+    }
+  </script>
+</body>
+<style>
+* {
+  list-style: none;
+}
+body {
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f0f0;
+
+  & > hgroup {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+
+    & > h1 {
+      margin: 0;
+    }
+
+    & > a {
+      display: flex;
+      align-items: end;
+    }
+  }
+
+  & > section {
+    display: flex;
+
+    & > form {
+      display: flex;
+      flex: 1;
+
+      & > input[type="text"] {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid #cccccc;
+        border-right: none;
+        border-radius: 5px 0 0 5px;
+        font-size: small;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      & > button {
+        padding: 0.5rem;
+        border: 1px solid #cccccc;
+        border-left: none;
+        border-radius: 0 5px 5px 0;
+        font-size: small;
+      }
+    }
+
+    & > button {
+      margin-left: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      font-size: small;
+    }
+  }
+
+  & > ul {
+    padding: 0;
+    li {
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      font-size: x-small;
+      border: 1px solid #cccccc;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+</style>
+</html>
