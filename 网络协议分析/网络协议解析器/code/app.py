@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from scapy.all import *
+import time
 
 app = Flask(__name__)
 
@@ -91,6 +92,11 @@ def capture_and_parse(device, packet_filter):
         result += "UDP：" + "\n" + parse_udp(packet) + "\n"
         result += "IP：" + "\n" + parse_ip(packet) + "\n"
         result += "Ethernet：" + "\n" + parse_ethernet(packet) + "\n"
+    
+    timestamp = str(int(time.time()))
+    filename = f"./output/{timestamp}.pcapng"
+    wrpcap(filename, packets)
+    
     return result
 
 
