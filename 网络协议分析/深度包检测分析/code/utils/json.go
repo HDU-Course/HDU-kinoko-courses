@@ -1,16 +1,14 @@
-package main
+package json
 
 import (
+	"encoding/json"
 	"log"
+	"os"
 	"time"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
-	"gonum.org/v1/plot"
-	"gonum.org/v1/plot/plotter"
-	"gonum.org/v1/plot/plotutil"
-	"gonum.org/v1/plot/vg"
 )
 
 const (
@@ -21,14 +19,9 @@ const (
 )
 
 type ServiceStats struct {
-	HostCount    int
-	PacketRatio  float64
-	AverageSpeed float64
-}
-
-type ServiceTypeStats struct {
-	ServiceType string
-	Stats       *ServiceStats
+	HostCount    int     `json:"hostCount"`
+	PacketRatio  float64 `json:"packetRatio"`
+	AverageSpeed float64 `json:"averageSpeed"`
 }
 
 func getServiceType(packet gopacket.Packet) string {
@@ -96,58 +89,6 @@ func calcAvgSpeed(packets []struct {
 	return float64(totalBytes) / elapsedTime
 }
 
-func plotServiceStats(serviceStats []*ServiceTypeStats) {
-	p := plot.New()
-	p.Title.Text = "Service Statistics"
-	p.X.Label.Text = "Service Type"
-	p.Y.Label.Text = "Value"
-
-	serviceTypes := make([]string, len(serviceStats))
-	hostCounts := make(plotter.Values, len(serviceStats))
-	packetRatios := make(plotter.Values, len(serviceStats))
-	averageSpeeds := make(plotter.Values, len(serviceStats))
-
-	for i, stat := range serviceStats {
-		serviceTypes[i] = stat.ServiceType
-		hostCounts[i] = float64(stat.Stats.HostCount)
-		packetRatios[i] = stat.Stats.PacketRatio
-		averageSpeeds[i] = stat.Stats.AverageSpeed
-	}
-
-	hostCountBar, err := plotter.NewBarChart(hostCounts, vg.Points(20))
-	if err != nil {
-		log.Fatal(err)
-	}
-	hostCountBar.LineStyle.Width = vg.Length(0)
-	hostCountBar.Color = plotutil.Color(0)
-	hostCountBar.Offset = -vg.Points(10)
-
-	packetRatioBar, err := plotter.NewBarChart(packetRatios, vg.Points(20))
-	if err != nil {
-		log.Fatal(err)
-	}
-	packetRatioBar.LineStyle.Width = vg.Length(0)
-	packetRatioBar.Color = plotutil.Color(1)
-
-	averageSpeedBar, err := plotter.NewBarChart(averageSpeeds, vg.Points(20))
-	if err != nil {
-		log.Fatal(err)
-	}
-	averageSpeedBar.LineStyle.Width = vg.Length(0)
-	averageSpeedBar.Color = plotutil.Color(2)
-	averageSpeedBar.Offset = vg.Points(10)
-
-	p.Add(hostCountBar, packetRatioBar, averageSpeedBar)
-	p.Legend.Add("Host Count", hostCountBar)
-	p.Legend.Add("Packet Ratio", packetRatioBar)
-	p.Legend.Add("Average Speed", averageSpeedBar)
-	p.NominalX(serviceTypes...)
-
-	if err := p.Save(6*vg.Inch, 4*vg.Inch, "service_stats.png"); err != nil {
-		log.Fatal(err)
-	}
-}
-
 func main() {
 	handle, err := pcap.OpenOffline("package.pcap")
 	if err != nil {
@@ -157,7 +98,7 @@ func main() {
 
 	packetSource := gopacket.NewPacketSource(handle, handle.LinkType())
 
-	serviceStats := make(map[string]*ServiceStats) // 将 serviceStats 的类型修改为 map[string]*ServiceStats
+	serviceStats := make(map[string]*ServiceStats)
 
 	totalPackets := 0
 
@@ -170,18 +111,34 @@ func main() {
 		}
 	}
 
-	for _, stat := range serviceStats {
-		stat.PacketRatio = stat.PacketRatio / float64(totalPackets)
+	for _, stats := range serviceStats {
+		stats.PacketRatio = stats.PacketRatio / float64(totalPackets)
 	}
 
-	// 将 serviceStats 转换为 []*ServiceTypeStats 类型
-	convertedServiceStats := make([]*ServiceTypeStats, 0, len(serviceStats))
-	for serviceType, stats := range serviceStats {
-		convertedServiceStats = append(convertedServiceStats, &ServiceTypeStats{
-			ServiceType: serviceType,
-			Stats:       stats,
-		})
+	// Convert serviceStats to JSON
+	jsonData, err := json.MarshalIndent(serviceStats, "", "  ")
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	plotServiceStats(convertedServiceStats)
+	// Save JSON data to a file
+	err = saveJSONToFile(jsonData, "../service_stats.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func saveJSONToFile(jsonData []byte, filename string) error {
+	file, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.Write(jsonData)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
