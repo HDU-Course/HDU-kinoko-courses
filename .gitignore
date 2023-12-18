@@ -1,1 +1,3 @@
-网络协议分析/code/.env
+venv
+.vscode
+.idea

@@ -11,6 +11,7 @@
 - [概率论与数理统计](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1)
 - [大学物理实验B](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8CB)
 - [大学物理2](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%862)
+- [国际动漫赏析](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%9B%BD%E9%99%85%E5%8A%A8%E6%BC%AB%E8%B5%8F%E6%9E%90)
 
 ## 声明
 该仓库中所有资料仅供学习参考，请勿用作其他用途。
