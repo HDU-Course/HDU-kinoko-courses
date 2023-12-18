@@ -24,7 +24,7 @@ public_key = private_key.public_key()
 # 保存公钥
 pem = public_key.public_bytes(
     encoding=serialization.Encoding.PEM,
-    format=serialization.PublicFormat.SubjectPublicKeyInfo
+    format=serialization.PublicFormat.PKCS1
 )
 with open('public_key.pem', 'wb') as key_file:
     key_file.write(pem)

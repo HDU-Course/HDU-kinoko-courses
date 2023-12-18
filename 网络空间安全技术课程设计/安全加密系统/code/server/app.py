@@ -46,6 +46,8 @@ def upload_file():
     encrypted_data = request.data
     filename = request.headers.get('filename')
     decrypted_data = decrypt_data(encrypted_data)
+    print(f"Encrypted content of file '{filename}':")
+    print(decrypted_data.decode())
     with open(os.path.join(UPLOADS_DIRECTORY, filename), 'wb') as file:
         file.write(decrypted_data)
     return 'File uploaded successfully'
