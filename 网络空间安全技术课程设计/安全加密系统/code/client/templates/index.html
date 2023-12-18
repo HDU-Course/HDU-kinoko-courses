@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+</head>
+<body>
+    <main>
+        <h1>File Upload</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
+    </main>
+</body>
+</html>
+<style>
+body {
+    position: absolute;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center; align-items: center;
+    background: #f0f0f0;
+    font-size: 16px;
+
+    > main {
+        padding: 2rem;
+        border: .1px solid #ccc;
+        background: #fff;
+
+        > h1 {
+            padding: 0; margin: 0 0 1rem;
+            text-align: center;
+        }
+
+        > form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; align-items: center;
+
+            > input {
+                display: block;
+                width: 100%;
+                padding: .5rem;
+                margin: 0 0 1rem;
+                border: .1px solid #ccc;
+                border-radius: 3px;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+</style>
