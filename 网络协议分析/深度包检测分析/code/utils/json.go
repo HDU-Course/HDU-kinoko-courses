@@ -1,4 +1,4 @@
-package json
+package main
 
 import (
 	"encoding/json"
@@ -90,7 +90,7 @@ func calcAvgSpeed(packets []struct {
 }
 
 func main() {
-	handle, err := pcap.OpenOffline("package.pcap")
+	handle, err := pcap.OpenOffline("../package.pcap")
 	if err != nil {
 		log.Fatal(err)
 	}

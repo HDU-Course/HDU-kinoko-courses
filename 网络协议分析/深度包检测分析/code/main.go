@@ -14,23 +14,24 @@ import (
 )
 
 const (
-	LowLatency         = "LowLatency"
-	GuaranteedLatency  = "GuaranteedLatency"
-	GuaranteedDelivery = "GuaranteedDelivery"
-	BestEffortDelivery = "BestEffortDelivery"
+	LowLatency         = "LowLatency"         // 低延迟
+	GuaranteedLatency  = "GuaranteedLatency"  // 保证延迟
+	GuaranteedDelivery = "GuaranteedDelivery" // 保证交付
+	BestEffortDelivery = "BestEffortDelivery" // 尽力交付
 )
 
 type ServiceStats struct {
-	HostCount    int
-	PacketRatio  float64
-	AverageSpeed float64
+	HostCount    int     // 主机数量
+	PacketRatio  float64 // 数据包比例
+	AverageSpeed float64 // 平均速度
 }
 
 type ServiceTypeStats struct {
-	ServiceType string
-	Stats       *ServiceStats
+	ServiceType string        // 服务类型
+	Stats       *ServiceStats // 服务统计信息
 }
 
+// 获取数据包的服务类型
 func getServiceType(packet gopacket.Packet) string {
 	if tcpLayer := packet.Layer(layers.LayerTypeTCP); tcpLayer != nil {
 		tcp, _ := tcpLayer.(*layers.TCP)
@@ -54,6 +55,7 @@ func getServiceType(packet gopacket.Packet) string {
 	return GuaranteedDelivery
 }
 
+// 更新服务统计信息
 func updateServiceStats(stats map[string]*ServiceStats, packet gopacket.Packet, serviceType string) {
 	if _, ok := stats[serviceType]; !ok {
 		stats[serviceType] = &ServiceStats{}
@@ -79,6 +81,7 @@ func updateServiceStats(stats map[string]*ServiceStats, packet gopacket.Packet, 
 	stats[serviceType].AverageSpeed = calcAvgSpeed(packets)
 }
 
+// 计算平均速度
 func calcAvgSpeed(packets []struct {
 	Length    int
 	Timestamp time.Time
@@ -96,11 +99,12 @@ func calcAvgSpeed(packets []struct {
 	return float64(totalBytes) / elapsedTime
 }
 
+// 绘制服务统计图表
 func plotServiceStats(serviceStats []*ServiceTypeStats) {
 	p := plot.New()
-	p.Title.Text = "Service Statistics"
-	p.X.Label.Text = "Service Type"
-	p.Y.Label.Text = "Value"
+	p.Title.Text = "服务统计信息"
+	p.X.Label.Text = "服务类型"
+	p.Y.Label.Text = "值"
 
 	serviceTypes := make([]string, len(serviceStats))
 	hostCounts := make(plotter.Values, len(serviceStats))
@@ -138,9 +142,9 @@ func plotServiceStats(serviceStats []*ServiceTypeStats) {
 	averageSpeedBar.Offset = vg.Points(10)
 
 	p.Add(hostCountBar, packetRatioBar, averageSpeedBar)
-	p.Legend.Add("Host Count", hostCountBar)
-	p.Legend.Add("Packet Ratio", packetRatioBar)
-	p.Legend.Add("Average Speed", averageSpeedBar)
+	p.Legend.Add("主机数量", hostCountBar)
+	p.Legend.Add("数据包比例", packetRatioBar)
+	p.Legend.Add("平均速度", averageSpeedBar)
 	p.NominalX(serviceTypes...)
 
 	if err := p.Save(6*vg.Inch, 4*vg.Inch, "service_stats.png"); err != nil {
@@ -157,7 +161,7 @@ func main() {
 
 	packetSource := gopacket.NewPacketSource(handle, handle.LinkType())
 
-	serviceStats := make(map[string]*ServiceStats) // 将 serviceStats 的类型修改为 map[string]*ServiceStats
+	serviceStats := make(map[string]*ServiceStats) // 服务统计信息
 
 	totalPackets := 0
 
