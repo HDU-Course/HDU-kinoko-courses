@@ -12,6 +12,7 @@
 - [大学物理实验B](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8CB)
 - [大学物理2](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%862)
 - [国际动漫赏析](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%9B%BD%E9%99%85%E5%8A%A8%E6%BC%AB%E8%B5%8F%E6%9E%90)
+- [互联网法律](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E4%BA%92%E8%81%94%E7%BD%91%E6%B3%95%E5%BE%8B)
 
 ## 声明
 该仓库中所有资料仅供学习参考，请勿用作其他用途。
