@@ -1,0 +1,16 @@
+# Output products list for <blk_mem_gen_v7_3>
+_xmsgs/pn_parser.xmsgs
+blk_mem_gen_v7_3/blk_mem_gen_v7_3_readme.txt
+blk_mem_gen_v7_3/doc/blk_mem_gen_v7_3_vinfo.html
+blk_mem_gen_v7_3/doc/pg058-blk-mem-gen.pdf
+blk_mem_gen_v7_3.asy
+blk_mem_gen_v7_3.gise
+blk_mem_gen_v7_3.ngc
+blk_mem_gen_v7_3.sym
+blk_mem_gen_v7_3.v
+blk_mem_gen_v7_3.veo
+blk_mem_gen_v7_3.xco
+blk_mem_gen_v7_3.xise
+blk_mem_gen_v7_3_flist.txt
+blk_mem_gen_v7_3_xmdf.tcl
+summary.log

@@ -1,0 +1,28 @@
+Command line:
+   TOP_RIJ_CPU_isim_beh.exe
+     -simmode  gui
+     -simrunnum  1
+     -socket  36531
+
+Fri Jan  5 02:02:42 2024
+
+
+ Elaboration Time: 0.03 sec
+
+ Current Memory Usage: 197.599 Meg
+
+ Total Signals          : 357
+ Total Nets             : 1759
+ Total Signal Drivers   : 146
+ Total Blocks           : 40
+ Total Primitive Blocks : 32
+ Total Processes        : 175
+ Total Traceable Variables  : 674
+ Total Scalar Nets and Variables : 43706
+
+ Total Simulation Time: 0.04 sec
+
+ Current Memory Usage: 273.101 Meg
+
+Fri Jan  5 02:02:45 2024
+

@@ -1,0 +1,6 @@
+verilog isim_temp "Register_file.v"
+verilog isim_temp "pc.v"
+verilog isim_temp "OP_YIMA.v"
+verilog isim_temp "ALU.v"
+verilog isim_temp "TOP_RIJ_CPU.v"
+verilog isim_temp "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
