@@ -15,6 +15,7 @@
 - [国际动漫赏析](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%9B%BD%E9%99%85%E5%8A%A8%E6%BC%AB%E8%B5%8F%E6%9E%90)
 - [互联网法律](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E4%BA%92%E8%81%94%E7%BD%91%E6%B3%95%E5%BE%8B)
 - [计算机组成原理课程设计](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1)
+- [大学军事](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%A4%A7%E5%AD%A6%E5%86%9B%E4%BA%8B)
 
 ## 声明
 该仓库中所有资料仅供学习参考，请勿用作其他用途。
