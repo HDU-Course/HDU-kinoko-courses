@@ -17,6 +17,7 @@
 - [计算机组成原理课程设计](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1)
 - [计算机组成原理](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86)
 - [大学军事](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%A4%A7%E5%AD%A6%E5%86%9B%E4%BA%8B)
+- [体育](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E4%BD%93%E8%82%B2)
 
 ## 声明
 该仓库中所有资料仅供学习参考，请勿用作其他用途。
