@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: " SQLServer123" # 注意首位有个空格
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
