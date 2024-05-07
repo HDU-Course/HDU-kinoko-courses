@@ -1,6 +1,6 @@
 <div align='center'>
     <h1 style='text-decoration: underline;'>HDU-shilingu-course</h1>
-    <img style='width: 15%; margin-bottom: 20px;' src='logo.svg'>
+    <img style='width: 34%; margin-bottom: 20px;' src='https://img.ma5hr00m.top/blog/oc-1.png' alt='ma5hr00m-oc'>
 </div>
 
 世另菇在该仓库中存储了 **HDU网络空间安全学院** 部分课程的学习资料以及相关攻略。希望后来者可以合理利用该仓库中的资源，更加高效地学习。
@@ -22,6 +22,7 @@
 - [计算机组成原理](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86)
 - [大学军事](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E5%A4%A7%E5%AD%A6%E5%86%9B%E4%BA%8B)
 - [体育](https://github.com/ma5hr00m/HDU-agu-course/tree/main/%E4%BD%93%E8%82%B2)
+- [数据库原理](https://github.com/ma5hr00m/HDU-shilingu-course/tree/main/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86)
 
 ## 声明
 该仓库中所有资料仅供学习参考，请勿用作其他用途。
