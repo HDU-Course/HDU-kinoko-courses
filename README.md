@@ -1,12 +1,9 @@
-<div align='center'>
-    <h1 style='text-decoration: underline;'>HDU-shilingu-course</h1>
-    <img style='width: 34%; margin-bottom: 20px;' src='oc.png' alt='ma5hr00m oc'>
-</div>
+# HDU-kinoko-course
 
-世另菇在该仓库中存储了 **HDU网络空间安全学院** 部分课程的学习资料以及相关攻略。希望后来者可以合理利用该仓库中的资源，更加 *高效地学习*。
+🏫杭州电子科技大学网络空间安全学院课程资料分享，主要涉及网安院的专业课，主体内容是PPT、复习资料、实验报告和相关课程攻略。目前只有少数专业课有试卷流出。
 
-如果对你有帮助，可以点点 ⭐star。
+如果想要为该仓库提供资源，欢迎致信[kzsoso@163.com](mailto:kzsoso@163.com)，也欢迎contribute到本仓库。如果对你有帮助，可以点点⭐star。
 
 ## 声明
 
-该仓库中所有资料仅供学习参考，请勿用作其他用途。
+该仓库中所有资料仅供学习参考，请勿用作其他用途。希望各位同学合理利用这些资源。
