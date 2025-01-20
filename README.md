@@ -1,5 +1,7 @@
 # HDU-kinoko-course
 
+![image.png](https://img.ma5hr00m.top/2025/20250120133424.png)
+
 🏫杭州电子科技大学网络空间安全学院课程资料分享，主要涉及网安院的专业课，主体内容是PPT、复习资料、实验报告和相关课程攻略。目前只有少数专业课有试卷流出。
 
 如果想要为该仓库提供资源，欢迎致信[kzsoso@163.com](mailto:kzsoso@163.com)，也欢迎contribute到本仓库。如果对你有帮助，可以点点⭐star。
